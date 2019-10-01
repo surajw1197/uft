@@ -1,0 +1,1339 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.02" os="" host="P3A-HYCQXJ2"><DocLocation><![CDATA[C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\CaseStudy1]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[CaseStudy1]]></DName>
+<Res><![CDATA[Res165]]></Res>
+<RunType fmStep="True" /><DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:11]]></Time>
+<TimeTick>1568890811</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["London"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:11]]></Time>
+<TimeTick>1568890811</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="9" Source="Action1" SourceLine="201" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:11]]></Time>
+<TimeTick>1568890811</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" Source="Action1" SourceLine="202" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["1-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:15]]></Time>
+<TimeTick>1568890815</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="13" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:16]]></Time>
+<TimeTick>1568890816</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="15" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:16]]></Time>
+<TimeTick>1568890816</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="17" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:16]]></Time>
+<TimeTick>1568890816</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="19" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["1-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:23]]></Time>
+<TimeTick>1568890823</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="21" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:23]]></Time>
+<TimeTick>1568890823</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="23" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:24]]></Time>
+<TimeTick>1568890824</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="25" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:24]]></Time>
+<TimeTick>1568890824</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="27" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["2-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:24]]></Time>
+<TimeTick>1568890824</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="29" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:31]]></Time>
+<TimeTick>1568890831</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="31" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:31]]></Time>
+<TimeTick>1568890831</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="33" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:32]]></Time>
+<TimeTick>1568890832</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="35" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["3-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:32]]></Time>
+<TimeTick>1568890832</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="37" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:39]]></Time>
+<TimeTick>1568890839</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="39" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:39]]></Time>
+<TimeTick>1568890839</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="41" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:39]]></Time>
+<TimeTick>1568890839</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="43" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["4-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:40]]></Time>
+<TimeTick>1568890840</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="45" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:46]]></Time>
+<TimeTick>1568890846</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="47" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:47]]></Time>
+<TimeTick>1568890847</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="49" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:47]]></Time>
+<TimeTick>1568890847</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="51" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["5-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:51]]></Time>
+<TimeTick>1568890851</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="53" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:51]]></Time>
+<TimeTick>1568890851</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="55" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:51]]></Time>
+<TimeTick>1568890851</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="57" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:51]]></Time>
+<TimeTick>1568890851</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="59" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["6-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:53]]></Time>
+<TimeTick>1568890853</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="61" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:53]]></Time>
+<TimeTick>1568890853</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="63" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:53]]></Time>
+<TimeTick>1568890853</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="65" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:53]]></Time>
+<TimeTick>1568890853</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="67" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["7-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:30:54]]></Time>
+<TimeTick>1568890854</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="69" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:00]]></Time>
+<TimeTick>1568890860</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="71" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:00]]></Time>
+<TimeTick>1568890860</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="73" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:01]]></Time>
+<TimeTick>1568890861</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="75" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["8-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:01]]></Time>
+<TimeTick>1568890861</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="77" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:01]]></Time>
+<TimeTick>1568890861</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="79" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:07]]></Time>
+<TimeTick>1568890867</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="81" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:08]]></Time>
+<TimeTick>1568890868</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="83" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["9-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:08]]></Time>
+<TimeTick>1568890868</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="85" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:08]]></Time>
+<TimeTick>1568890868</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="87" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:08]]></Time>
+<TimeTick>1568890868</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="89" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:12]]></Time>
+<TimeTick>1568890872</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="91" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["10-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:12]]></Time>
+<TimeTick>1568890872</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="93" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:12]]></Time>
+<TimeTick>1568890872</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="95" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:13]]></Time>
+<TimeTick>1568890873</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="97" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:13]]></Time>
+<TimeTick>1568890873</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="99" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["11-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:19]]></Time>
+<TimeTick>1568890879</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="101" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:20]]></Time>
+<TimeTick>1568890880</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="103" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:20]]></Time>
+<TimeTick>1568890880</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="105" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:22]]></Time>
+<TimeTick>1568890882</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="107" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["12-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:22]]></Time>
+<TimeTick>1568890882</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="109" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:22]]></Time>
+<TimeTick>1568890882</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="111" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:23]]></Time>
+<TimeTick>1568890883</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="113" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:30]]></Time>
+<TimeTick>1568890890</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="115" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["13-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:31]]></Time>
+<TimeTick>1568890891</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="117" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:31]]></Time>
+<TimeTick>1568890891</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="119" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:37]]></Time>
+<TimeTick>1568890897</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="121" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:38]]></Time>
+<TimeTick>1568890898</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="123" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:38]]></Time>
+<TimeTick>1568890898</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="125" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:38]]></Time>
+<TimeTick>1568890898</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="127" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:45]]></Time>
+<TimeTick>1568890905</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="129" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:45]]></Time>
+<TimeTick>1568890905</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="131" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["15-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:45]]></Time>
+<TimeTick>1568890905</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="133" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:46]]></Time>
+<TimeTick>1568890906</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="135" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:52]]></Time>
+<TimeTick>1568890912</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="137" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:52]]></Time>
+<TimeTick>1568890912</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="139" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["16-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:52]]></Time>
+<TimeTick>1568890912</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="141" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:53]]></Time>
+<TimeTick>1568890913</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="143" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:53]]></Time>
+<TimeTick>1568890913</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="145" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:31:59]]></Time>
+<TimeTick>1568890919</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="147" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["17-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:00]]></Time>
+<TimeTick>1568890920</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="149" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:00]]></Time>
+<TimeTick>1568890920</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="151" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:00]]></Time>
+<TimeTick>1568890920</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="153" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:07]]></Time>
+<TimeTick>1568890927</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="155" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["18-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:07]]></Time>
+<TimeTick>1568890927</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="157" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:07]]></Time>
+<TimeTick>1568890927</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="159" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:07]]></Time>
+<TimeTick>1568890927</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="161" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:07]]></Time>
+<TimeTick>1568890927</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="163" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["19-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:14]]></Time>
+<TimeTick>1568890934</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="165" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:14]]></Time>
+<TimeTick>1568890934</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="167" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:14]]></Time>
+<TimeTick>1568890934</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="169" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:14]]></Time>
+<TimeTick>1568890934</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="171" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["20-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:15]]></Time>
+<TimeTick>1568890935</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="173" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:21]]></Time>
+<TimeTick>1568890941</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="175" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:22]]></Time>
+<TimeTick>1568890942</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="177" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:22]]></Time>
+<TimeTick>1568890942</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="179" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["21-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:26]]></Time>
+<TimeTick>1568890946</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="181" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:26]]></Time>
+<TimeTick>1568890946</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="183" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:26]]></Time>
+<TimeTick>1568890946</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="185" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:26]]></Time>
+<TimeTick>1568890946</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="187" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["22-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:27]]></Time>
+<TimeTick>1568890947</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="189" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:30]]></Time>
+<TimeTick>1568890950</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="191" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:31]]></Time>
+<TimeTick>1568890951</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="193" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:31]]></Time>
+<TimeTick>1568890951</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="195" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:31]]></Time>
+<TimeTick>1568890951</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="197" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:31]]></Time>
+<TimeTick>1568890951</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="199" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:38]]></Time>
+<TimeTick>1568890958</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="201" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:38]]></Time>
+<TimeTick>1568890958</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="203" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["24-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:38]]></Time>
+<TimeTick>1568890958</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="205" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:39]]></Time>
+<TimeTick>1568890959</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="207" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:39]]></Time>
+<TimeTick>1568890959</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="209" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:45]]></Time>
+<TimeTick>1568890965</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="211" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["25-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:46]]></Time>
+<TimeTick>1568890966</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="213" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:46]]></Time>
+<TimeTick>1568890966</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="215" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:46]]></Time>
+<TimeTick>1568890966</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="217" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:53]]></Time>
+<TimeTick>1568890973</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="219" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["26-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:53]]></Time>
+<TimeTick>1568890973</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="221" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T112">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:53]]></Time>
+<TimeTick>1568890973</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="223" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:53]]></Time>
+<TimeTick>1568890973</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="225" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:32:53]]></Time>
+<TimeTick>1568890973</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="227" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["27-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:00]]></Time>
+<TimeTick>1568890980</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="229" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:00]]></Time>
+<TimeTick>1568890980</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="231" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T117">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:00]]></Time>
+<TimeTick>1568890980</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="233" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:00]]></Time>
+<TimeTick>1568890980</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="235" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T119">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["28-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:01]]></Time>
+<TimeTick>1568890981</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="237" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T120">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:07]]></Time>
+<TimeTick>1568890987</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="239" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T121">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:08]]></Time>
+<TimeTick>1568890988</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="241" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T122">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:08]]></Time>
+<TimeTick>1568890988</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="243" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T123">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["29-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:08]]></Time>
+<TimeTick>1568890988</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="245" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T124">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:08]]></Time>
+<TimeTick>1568890988</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="247" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T125">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:15]]></Time>
+<TimeTick>1568890995</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="249" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T126">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:15]]></Time>
+<TimeTick>1568890995</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="251" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T127">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["30-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:15]]></Time>
+<TimeTick>1568890995</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="253" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T128">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:15]]></Time>
+<TimeTick>1568890995</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="255" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T129">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:16]]></Time>
+<TimeTick>1568890996</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="257" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T130">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:22]]></Time>
+<TimeTick>1568891002</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="259" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T131">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["31-Oct-2019"]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:22]]></Time>
+<TimeTick>1568891002</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="261" Source="Action1" SourceLine="205" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T132">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:23]]></Time>
+<TimeTick>1568891003</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="263" Source="Action1" SourceLine="206" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T133">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.RowCount]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:23]]></Time>
+<TimeTick>1568891003</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="265" Source="Action1" SourceLine="207" >
+<Disp><![CDATA[flightsDataGrid.RowCount]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T134">
+<Obj plainTxt="False" ><![CDATA[BACK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/19/2019 - 16:33:23]]></Time>
+<TimeTick>1568891003</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="267" Source="Action1" SourceLine="209" >
+<Disp><![CDATA[BACK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="8" Source="Action1" SourceLine="201" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="9/19/2019 - 16:30:02" eTime="9/19/2019 - 16:33:23" passed="0" failed="0" warnings="0" ><Param paramInOut = "In"><ParamName><![CDATA[Param1]]></ParamName><ParamVal><![CDATA[3]]></ParamVal>
+</Param>
+</Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="9/19/2019 - 16:30:00" eTime="9/19/2019 - 16:33:23" passed="0" failed="0" warnings="0" ><Param paramInOut = "In"><ParamName><![CDATA[Param1]]></ParamName><ParamVal><![CDATA[3]]></ParamVal>
+</Param>
+</Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" >
+<Disp><![CDATA[Test CaseStudy1 Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

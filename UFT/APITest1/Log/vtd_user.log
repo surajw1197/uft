@@ -1,0 +1,98 @@
+2019-09-18 12:04:48,047 [1] INFO  - Loaded appender: FileAppenderExternal
+2019-09-18 12:04:48,253 [1] INFO  - Loaded appender: UserLoggerAppender
+2019-09-18 12:04:48,254 [1] INFO  - Loaded appender: FileAppenderInternal
+2019-09-18 12:04:48,254 [1] INFO  - Loaded appender: FileAppenderExternal
+2019-09-18 12:04:48,254 [1] INFO  - Loaded appender: UserLoggerAppender
+2019-09-18 12:04:48,254 [1] INFO  - Loaded appender: FileAppenderInternal
+2019-09-18 12:04:54,268 [16] INFO  - Step 'Start' : Step 'Start' started
+2019-09-18 12:04:54,930 [16] INFO  - Step 'Start' ended successfully
+2019-09-18 12:04:54,932 [16] INFO  - Step 'Test Flow' : Step 'Test Flow' started
+2019-09-18 12:04:54,935 [16] INFO  - Step 'Iteration 1' : Step 'Iteration 1' started
+2019-09-18 12:04:54,968 [16] INFO  - Step 'GetFlights' : Step 'GetFlights' started
+2019-09-18 12:04:55,317 [16] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <GetFlights xmlns="HP.SOAQ.SampleApp">
+      <DepartureCity>London</DepartureCity>
+      <ArrivalCity>Paris</ArrivalCity>
+      <FlightDate>2019-09-19T00:00:00+05:30</FlightDate>
+    </GetFlights>
+  </Body>
+</Envelope>
+
+2019-09-18 12:04:55,341 [16] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2019-09-18 12:04:56,240 [16] INFO  - Returning the response to the previous channel
+2019-09-18 12:04:56,246 [16] INFO  - 
+Response:
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetFlightsResponse xmlns="HP.SOAQ.SampleApp">
+      <GetFlightsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <Flight>
+          <Airline>BA</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>05:31 PM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>03:51 PM</DepartureTime>
+          <FlightNumber>10316</FlightNumber>
+          <Price>149</Price>
+        </Flight>
+        <Flight>
+          <Airline>BA</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>03:07 PM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>01:27 PM</DepartureTime>
+          <FlightNumber>12408</FlightNumber>
+          <Price>139</Price>
+        </Flight>
+        <Flight>
+          <Airline>AF</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>10:00 AM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>08:00 AM</DepartureTime>
+          <FlightNumber>12518</FlightNumber>
+          <Price>166.8</Price>
+        </Flight>
+        <Flight>
+          <Airline>AF</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>12:24 PM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>10:24 AM</DepartureTime>
+          <FlightNumber>12522</FlightNumber>
+          <Price>164</Price>
+        </Flight>
+        <Flight>
+          <Airline>AF</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>05:12 PM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>03:12 PM</DepartureTime>
+          <FlightNumber>12530</FlightNumber>
+          <Price>163</Price>
+        </Flight>
+        <Flight>
+          <Airline>BA</Airline>
+          <ArrivalCity>Paris</ArrivalCity>
+          <ArrivalTime>07:55 PM</ArrivalTime>
+          <DepartureCity>London</DepartureCity>
+          <DepartureTime>06:15 PM</DepartureTime>
+          <FlightNumber>13348</FlightNumber>
+          <Price>161.8</Price>
+        </Flight>
+      </GetFlightsResult>
+    </GetFlightsResponse>
+  </s:Body>
+</s:Envelope>
+
+2019-09-18 12:04:56,425 [16] INFO  - Structural Validation: True
+2019-09-18 12:04:56,440 [16] INFO  - Step 'GetFlights' ended successfully
+2019-09-18 12:04:56,442 [16] INFO  - Step 'Iteration 1' ended successfully
+2019-09-18 12:04:56,445 [16] INFO  - Step 'Test Flow' ended successfully
+2019-09-18 12:04:56,446 [16] INFO  - Step 'End' : Step 'End' started
+2019-09-18 12:04:56,474 [16] INFO  - Step 'End' ended successfully

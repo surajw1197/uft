@@ -1,0 +1,30 @@
+2019-09-18 12:22:51,017 [1] INFO  - Loaded appender: FileAppenderExternal
+2019-09-18 12:22:51,171 [1] INFO  - Loaded appender: UserLoggerAppender
+2019-09-18 12:22:51,171 [1] INFO  - Loaded appender: FileAppenderInternal
+2019-09-18 12:22:51,172 [1] INFO  - Loaded appender: FileAppenderExternal
+2019-09-18 12:22:51,172 [1] INFO  - Loaded appender: UserLoggerAppender
+2019-09-18 12:22:51,172 [1] INFO  - Loaded appender: FileAppenderInternal
+2019-09-18 12:22:53,406 [16] INFO  - Step 'Start' : Step 'Start' started
+2019-09-18 12:22:53,722 [16] INFO  - Step 'Start' ended successfully
+2019-09-18 12:22:53,724 [16] INFO  - Step 'Test Flow' : Step 'Test Flow' started
+2019-09-18 12:22:53,727 [16] INFO  - Step 'Iteration 1' : Step 'Iteration 1' started
+2019-09-18 12:22:53,729 [16] INFO  - Step 'GetFlightByNumber4' : Step 'GetFlightByNumber4' started
+2019-09-18 12:22:54,109 [16] INFO  - Step 'GetFlightByNumber4' : Fetching HTTP Url: 'http://localhost:8000/HPFlights_REST/Flights/10316'
+2019-09-18 12:22:54,597 [16] INFO  - Step 'GetFlightByNumber4' : Server returned status code: 200
+2019-09-18 12:22:54,598 [16] INFO  - Step 'GetFlightByNumber4' : HTTP Raw request:
+2019-09-18 12:22:54,600 [16] INFO  - Step 'GetFlightByNumber4' : GET http://localhost:8000/HPFlights_REST/Flights/10316 1.1
+Host: localhost:8000
+Connection: Keep-Alive
+
+2019-09-18 12:22:54,603 [16] INFO  - Step 'GetFlightByNumber4' : HTTP Raw response:
+2019-09-18 12:22:54,604 [16] INFO  - Step 'GetFlightByNumber4' : HTTP/1.1 200 OK
+Content-Length: 311
+Content-Type: application/xml; charset=utf-8
+Date: Wed, 18 Sep 2019 06:52:54 GMT
+Server: Microsoft-HTTPAPI/2.0
+<Flight xmlns="HP.SOAQ.SampleApp" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Airline>BA</Airline><ArrivalCity>Paris</ArrivalCity><ArrivalTime>05:31 PM</ArrivalTime><DepartureCity>London</DepartureCity><DepartureTime>03:51 PM</DepartureTime><FlightNumber>10316</FlightNumber><Price>149</Price></Flight>
+2019-09-18 12:22:54,617 [16] INFO  - Step 'GetFlightByNumber4' ended successfully
+2019-09-18 12:22:54,621 [16] INFO  - Step 'Iteration 1' ended successfully
+2019-09-18 12:22:54,624 [16] INFO  - Step 'Test Flow' ended successfully
+2019-09-18 12:22:54,625 [16] INFO  - Step 'End' : Step 'End' started
+2019-09-18 12:22:54,725 [16] INFO  - Step 'End' ended successfully

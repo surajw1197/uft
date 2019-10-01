@@ -1,0 +1,1 @@
+<Flight xmlns="HP.SOAQ.SampleApp" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Airline>BA</Airline><ArrivalCity>Paris</ArrivalCity><ArrivalTime>05:31 PM</ArrivalTime><DepartureCity>London</DepartureCity><DepartureTime>03:51 PM</DepartureTime><FlightNumber>10316</FlightNumber><Price>149</Price></Flight>

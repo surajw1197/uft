@@ -1,0 +1,431 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.02" os="" host="P3A-HYCQXJ2"><DocLocation><![CDATA[C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\Registration]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[Registration]]></DName>
+<Res><![CDATA[Res1]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:22]]></Time>
+<TimeTick>1568370442</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Navigate]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://newtours.demoaut.com]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:22]]></Time>
+<TimeTick>1568370442</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="9" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Navigate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:25]]></Time>
+<TimeTick>1568370445</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="11" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Sync]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="8" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T7">
+<AName><![CDATA[Registration_Action]]></AName>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Welcome: Mercury Tours]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:26]]></Time>
+<TimeTick>1568370446</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[Welcome: Mercury Tours]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:26]]></Time>
+<TimeTick>1568370446</TimeTick>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[REGISTER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:26]]></Time>
+<TimeTick>1568370446</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="17" Source="Registration_Action" SourceLine="1" >
+<Disp><![CDATA[REGISTER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="16" Source="Registration_Action" SourceLine="1" >
+<Disp><![CDATA[Welcome: Mercury Tours]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[Register: Mercury Tours_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:28]]></Time>
+<TimeTick>1568370448</TimeTick>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[firstName.Drag]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:28]]></Time>
+<TimeTick>1568370448</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="20" Source="Registration_Action" SourceLine="2" >
+<Disp><![CDATA[firstName.Drag]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[firstName.Drop]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:28]]></Time>
+<TimeTick>1568370448</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="23" Source="Registration_Action" SourceLine="3" >
+<Disp><![CDATA[firstName.Drop]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[firstName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["s"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:28]]></Time>
+<TimeTick>1568370448</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="26" Source="Registration_Action" SourceLine="4" >
+<Disp><![CDATA[firstName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[lastName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["w"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:29]]></Time>
+<TimeTick>1568370449</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="29" Source="Registration_Action" SourceLine="5" >
+<Disp><![CDATA[lastName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[phone.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["789456123"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:29]]></Time>
+<TimeTick>1568370449</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="32" Source="Registration_Action" SourceLine="6" >
+<Disp><![CDATA[phone.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[phone.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["7894561230"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:29]]></Time>
+<TimeTick>1568370449</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="35" Source="Registration_Action" SourceLine="7" >
+<Disp><![CDATA[phone.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[userName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["s@gmail.com"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:29]]></Time>
+<TimeTick>1568370449</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="38" Source="Registration_Action" SourceLine="8" >
+<Disp><![CDATA[userName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[address1.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:29]]></Time>
+<TimeTick>1568370449</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="41" Source="Registration_Action" SourceLine="9" >
+<Disp><![CDATA[address1.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[address2.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="44" Source="Registration_Action" SourceLine="10" >
+<Disp><![CDATA[address2.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[city.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="47" Source="Registration_Action" SourceLine="11" >
+<Disp><![CDATA[city.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[state.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="50" Source="Registration_Action" SourceLine="12" >
+<Disp><![CDATA[state.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[postalCode.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="53" Source="Registration_Action" SourceLine="13" >
+<Disp><![CDATA[postalCode.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[country.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["PAKISTAN"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="56" Source="Registration_Action" SourceLine="14" >
+<Disp><![CDATA[country.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[email.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:30]]></Time>
+<TimeTick>1568370450</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="59" Source="Registration_Action" SourceLine="15" >
+<Disp><![CDATA[email.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["5d7b5ecfcfc8956f"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="62" Source="Registration_Action" SourceLine="16" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[confirmPassword.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["5d7b5ed2130096f37003"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="65" Source="Registration_Action" SourceLine="17" >
+<Disp><![CDATA[confirmPassword.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[country.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["INDIA"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="68" Source="Registration_Action" SourceLine="18" >
+<Disp><![CDATA[country.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[email.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["useristhi"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="71" Source="Registration_Action" SourceLine="19" >
+<Disp><![CDATA[email.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[email.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["useristhis"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="74" Source="Registration_Action" SourceLine="20" >
+<Disp><![CDATA[email.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["5d7b5ef6771838a889c739543610429bf325dd0a70ed"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:31]]></Time>
+<TimeTick>1568370451</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="77" Source="Registration_Action" SourceLine="21" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[confirmPassword.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["5d7b5efa51d5120aea1a6f8d3c3ff641b8feeb4f22fa"]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:32]]></Time>
+<TimeTick>1568370452</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="80" Source="Registration_Action" SourceLine="22" >
+<Disp><![CDATA[confirmPassword.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[register.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/13/2019 - 15:57:32]]></Time>
+<TimeTick>1568370452</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="83" Source="Registration_Action" SourceLine="23" >
+<Disp><![CDATA[register.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[9/13/2019 - 15:58:10]]></Time>
+<TimeTick>1568370490</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="84" status="Information" >
+<Disp><![CDATA[Stop Run]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="19" Source="Registration_Action" SourceLine="2" >
+<Disp><![CDATA[Register: Mercury Tours_2]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="15" Source="Registration_Action" SourceLine="1" >
+<Disp><![CDATA[Welcome: Mercury Tours]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="9/13/2019 - 15:57:25" eTime="9/13/2019 - 15:58:10" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="5" nRep="12" >
+<Disp><![CDATA[Registration_Action Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" >
+<Disp><![CDATA[Registration Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="9/13/2019 - 15:57:18" eTime="9/13/2019 - 15:58:10" passed="0" failed="0" warnings="0" stopped="True" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" >
+<Disp><![CDATA[Test Registration Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

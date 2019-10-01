@@ -1,0 +1,495 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.02" os="" host="P3A-HYCQXJ2"><DocLocation><![CDATA[C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\CaseStudy1]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[CaseStudy1]]></DName>
+<Res><![CDATA[Res45]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:09]]></Time>
+<TimeTick>1568801229</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Navigate]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://newtours.demoaut.com]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:09]]></Time>
+<TimeTick>1568801229</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="9" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Navigate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[StartUp Browser.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:10]]></Time>
+<TimeTick>1568801230</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="11" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser.Sync]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="8" Source="Action0" SourceLine="-1" >
+<Disp><![CDATA[StartUp Browser]]></Disp>
+</NodeArgs>
+</Step>
+<Action rID="T7">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Welcome: Mercury Tours]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:10]]></Time>
+<TimeTick>1568801230</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[Welcome: Mercury Tours]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:10]]></Time>
+<TimeTick>1568801230</TimeTick>
+<HtmlStep rID="T10">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "Welcome: Mercury Tours": </span><span class="FailedHigh">Failed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 9/18/2019 - 15:37:10</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">Page Check&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td class="text">number of images&nbsp;</td>
+				<TD class="Text" Title="">&quot;26&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">number of links&nbsp;</td>
+				<TD class="Text" Title="">&quot;16&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><td  class="hl3">Checking  the links captured addresses vs. the expected ones&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Link Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Url&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td class="text">Home&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercurywelcome.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercurywelcome.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Flights&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryreservation.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryreservation.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Hotels&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Car Rentals&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Cruises&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercurycruise.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercurycruise.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Destinations&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Vacations&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">SIGN-ON&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercurysignon.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercurysignon.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">REGISTER&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryregister.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryregister.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">SUPPORT&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">CONTACT&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">your destination&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">featured vacation destinations&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryunderconst.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryunderconst.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Register here&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/mercuryregister.php?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/mercuryregister.php&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Business Travel @ About.com&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://businesstravel.about.com/mbody.htm?PM=78_101_T&amp;cob=home&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Salon Travel&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://www.salon.com/travel/index.html&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><td  class="hl3">Checking  the images captured addresses vs. the expected ones&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Image Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Source&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td class="text">Mercury Tours&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/nav/logo.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">html&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/nav/html.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">boxad1&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/nav/boxad1.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">banner2&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/banner2.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Featured Destination: Aruba&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/featured_destination.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Specials&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_specials.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">spacer&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/spacer.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Tour Tips&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_tips.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">spacer&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/spacer.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Tip#93&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/tip93.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">spacer&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/spacer.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Find a Flight&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_findflight.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">hdr_right&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_right.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Sign-In&nbsp;</td>
+				<TD class="Passed" Title="">	<table border=0 width="100%%"><tr><td align=left bgcolor="#ffffff" title="Expected"><span class="Text">&quot;http://newtours.demoaut.com/images/btn_signin.gif?osCsid=6cc798c49b08995bcc40d5b25f5772ed&quot;&nbsp;</span></td> </tr>
+<tr><td align=left bgcolor="#c0c0c0" title="Actual"><span class="FailedLow">&quot;http://newtours.demoaut.com/images/btn_signin.gif&quot;&nbsp;</span></td></tr></table>
+</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">spacer&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/spacer.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Desinations&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_destinations.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">hdr_right&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_right.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">icn_destinations&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/icn_destinations.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">vacations&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_vacation.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">hdr_right&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_right.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">icn_vacations&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/icn_vacations.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Register&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_register.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">hdr_right&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_right.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">icn_register&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/icn_register.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">Links&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_links.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<td class="text">hdr_right&nbsp;</td>
+				<TD class="Text" Title="">&quot;http://newtours.demoaut.com/images/hdr_right.gif&quot;&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1568801230</TimeTick>
+<NodeArgs eType="Verification" icon="6" nRep="16" status="Failed" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[Checkpoint "Welcome: Mercury Tours"]]></Disp>
+<BtmPane vType="HTMLSNSH" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf14.xml]]></Path>
+<ASHilite><![CDATA[Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="6" nRep="15" status="Failed" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[Welcome: Mercury Tours]]></Disp>
+<BtmPane vType="HTMLSNSH" >
+<Path><![CDATA[ZIP::Act1\Row0\ssf13.xml]]></Path>
+<ASHilite><![CDATA[Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="14" status="Failed" Source="Action1" SourceLine="39" >
+<Disp><![CDATA[Welcome: Mercury Tours]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj ><![CDATA[no_images]]></Obj>
+<Details ><![CDATA[no_images Not Equals to 25]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:11]]></Time>
+<TimeTick>1568801231</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="17" status="Failed" Source="Action1" SourceLine="46" >
+<Disp><![CDATA[no_images]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj ><![CDATA[no_links]]></Obj>
+<Details ><![CDATA[no_links Equals to 15]]></Details>
+<Time><![CDATA[9/18/2019 - 15:37:11]]></Time>
+<TimeTick>1568801231</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="18" status="Passed" Source="Action1" SourceLine="51" >
+<Disp><![CDATA[no_links]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="9/18/2019 - 15:37:10" eTime="9/18/2019 - 15:37:11" passed="1" failed="2" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="5" nRep="12" status="Failed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[CaseStudy1 Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="9/18/2019 - 15:37:08" eTime="9/18/2019 - 15:37:11" passed="1" failed="2" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test CaseStudy1 Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

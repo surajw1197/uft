@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>a2cebcb7-c8b0-4f7e-8aba-4f1e8d95e190</ID>
+  <Name>HPFlights_</Name>
+  <Type>WSDL</Type>
+  <Version>1</Version>
+  <CreationDate>2019-09-18T11:53:31.8745352+05:30</CreationDate>
+  <UpdateDate>2019-09-18T11:53:31.8745352+05:30</UpdateDate>
+  <LoaderID>SignatureResourceHandler</LoaderID>
+  <MetaDataSignatureFile>6f0e9f06-350f-4873-8047-93aa57129c98.xml</MetaDataSignatureFile>
+  <TestResourceId>6f0e9f06-350f-4873-8047-93aa57129c98</TestResourceId>
+  <RepositoryType>TestRepository</RepositoryType>
+  <SignatureCodonId>HP.ST.WebServiceWsdl</SignatureCodonId>
+  <SignatureAddinVersion>14.2.2746.0</SignatureAddinVersion>
+  <Properties>
+    <Item>
+      <Key>
+        <string>RepositoryPath</string>
+      </Key>
+      <Value>
+        <string>C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\APITest1\EmbeddedResources</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>ResourceOrigin</string>
+      </Key>
+      <Value>
+        <string>C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\APITest1\EmbeddedResources\HPFlights_</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>PrototypeDbVersion</string>
+      </Key>
+      <Value>
+        <string>14.2.2746.0</string>
+      </Value>
+    </Item>
+  </Properties>
+</ResourceManifest>

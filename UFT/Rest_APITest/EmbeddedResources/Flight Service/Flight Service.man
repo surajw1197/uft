@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>c878eae0-2b52-4378-8a33-0a97aef49ca3</ID>
+  <Name>Flight Service</Name>
+  <Type>REST</Type>
+  <Version>1</Version>
+  <CreationDate>2019-09-18T12:20:51.1726529+05:30</CreationDate>
+  <UpdateDate>2019-09-18T12:20:51.1726529+05:30</UpdateDate>
+  <LoaderID>SignatureResourceHandler</LoaderID>
+  <MetaDataSignatureFile>cec44c21-44d2-4d9b-ac91-80e836f119fe.xml</MetaDataSignatureFile>
+  <TestResourceId>cec44c21-44d2-4d9b-ac91-80e836f119fe</TestResourceId>
+  <RepositoryType>TestRepository</RepositoryType>
+  <SignatureCodonId>HP.ST.RestDesignTime.RestServicesV2</SignatureCodonId>
+  <SignatureAddinVersion>14.2.2746.0</SignatureAddinVersion>
+  <Properties>
+    <Item>
+      <Key>
+        <string>RepositoryPath</string>
+      </Key>
+      <Value>
+        <string>C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\Rest_APITest\EmbeddedResources</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>ResourceOrigin</string>
+      </Key>
+      <Value>
+        <string>C:\Users\pdc3a-training.pdc3a\Documents\Unified Functional Testing\Rest_APITest\EmbeddedResources\Flight Service</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>PrototypeDbVersion</string>
+      </Key>
+      <Value>
+        <string>14.2.2746.0</string>
+      </Value>
+    </Item>
+  </Properties>
+</ResourceManifest>
