@@ -1,0 +1,45 @@
+''''''Wait
+
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("userName").Set "mercury"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("password").SetSecure "5d9abf6e394d7962ffa5e4a14f401b00d7525735"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Click 28,10
+wait 180
+
+Browser("Welcome: Mercury Tours").Window("Java Application Blocked").Click 474,300
+Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Sync
+Browser("Welcome: Mercury Tours").CloseAllTabs
+
+'''''Exist
+
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("userName").Set "mercury"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("password").SetSecure "5d9abf6e394d7962ffa5e4a14f401b00d7525735"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Click 28,10
+''wait 180
+If Browser("Welcome: Mercury Tours").Window("Java Application Blocked").Exist(180) Then
+	Browser("Welcome: Mercury Tours").Window("Java Application Blocked").Click 474,300
+Else
+	ExitTest
+End If
+
+Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Sync
+Browser("Welcome: Mercury Tours").CloseAllTabs
+
+
+
+'''''Sync 
+
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("userName").Set "mercury"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("password").SetSecure "5d9abf6e394d7962ffa5e4a14f401b00d7525735"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Click 28,10
+wait 180
+
+Browser("Welcome: Mercury Tours").Window("Java Application Blocked").Click 474,300
+Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Sync    ''Sync
+Browser("Welcome: Mercury Tours").CloseAllTabs
+
+''''''SynchronationPoint
+
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfEdit("agentName").Set "john"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfEdit("password").SetSecure "5d9ac41046e4a2b9bb78"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("OK").WaitProperty "enabled", True, 5000
