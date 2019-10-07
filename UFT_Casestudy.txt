@@ -1,0 +1,209 @@
+ 
+'''''''''Casestudy 1
+ 
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("userName").Set "useristhis1"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("password").SetSecure "5d81d7e40fd80af30d6375edfd7ed99935df"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Click 45,6
+If Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Exist(80) Then
+	Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Link("SIGN-OFF").Click
+Else
+	MsgBox "Page not loaded"
+End If
+
+
+
+
+''''Casestudy 2
+
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("userName").Set "useristhis1"
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").WebEdit("password").SetSecure "5d81d7e40fd80af30d6375edfd7ed99935df"
+
+If Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Check(CheckPoint("Sign-In_2")) Then
+
+	Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Image("Sign-In").Click 45,6
+
+	If Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Exist(5) Then
+		Browser("Welcome: Mercury Tours").Page("Find a Flight: Mercury").Link("SIGN-OFF").Click
+	End If
+	
+Else
+	Browser("Welcome: Mercury Tours").CloseAllTabs
+End If
+
+
+
+
+
+'''''casestudy 3
+
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Check CheckPoint("Welcome: Mercury Tours")
+no_imgs = DataTable.Value("No_Images",1)
+no_links = DataTable.Value("No_Links",1)
+
+If no_img=25 Then
+	Reporter.ReportEvent micPass,"no_images","no_images equals to 25"
+Else
+	Reporter.ReportEvent micfail,"no_images","no_images Not Equals to 25"
+End If
+
+
+
+If no_links=15 Then
+	Reporter.ReportEvent micPass,"no_links","no_links Equals to 15"
+
+Else
+	Reporter.ReportEvent micfail,"no_links","no_links Not Equals to 15"
+End If
+
+
+
+
+
+''''''''''casestudy 4
+
+cnt = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").GetItemsCount
+For i = 0 To cnt-1 Step 1
+
+	
+	from_city = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").GetItem(i)
+	WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select from_city
+    to_city = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").GetItem(i)
+    WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select to_city
+    
+    
+    If from_city=to_city Then
+    	Reporter.ReportEvent micfail,"from_city_toCity",from_city & " & " & to_city & "are same"
+    Else
+    	Reporter.ReportEvent micPass,"from_city_toCity",from_city & " & " & to_city & "are not same"
+    End If
+Next
+
+
+
+
+
+
+
+
+
+'''''''''''caseStudy 5
+
+Flight_no = "12522 AF"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select "London"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select "Paris"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+row_cnt = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").RowCount
+
+
+	For i = 0 To row_cnt-1 Step 1
+	fn = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").GetCellData(i,4)
+	
+	If fn=Flight_no Then
+		Reporter.ReportEvent micPass,"Flight number","Flight Number is found"
+	Else
+		Reporter.ReportEvent micFail,"Flight number","Flight Number Not Found"
+	End If
+Next
+
+	
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ '''''''casestudy 6
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select "London"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select "Paris"
+SelectedFromCity = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").GetSelection
+SelectedToCity = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").GetSelection
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+
+
+From = WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("From: London").GetROProperty("name")
+ToCity = WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("To: Paris").GetROProperty("name")
+Fromarr = Split(From,": ")
+ToCityarr = Split(ToCity,": ")
+If Fromarr(1)=SelectedFromCity Then
+	If ToCityarr(1)=SelectedToCity Then
+		Reporter.ReportEvent micPass,"FROM AND TO","From-To city selected and displayed are same"
+	Else
+		Reporter.ReportEvent micFail,"FROM AND TO","From-To city selected and displayed are not same"
+	End If
+End If
+
+
+
+''''''CaseStudy 7
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select DataTable("FromCity",dtGlobalSheet)
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select DataTable("ToCity",dtGlobalSheet)
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("numOfTickets").Select DataTable("No_Of_Tickets",dtGlobalSheet)
+No_Tkts = WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("numOfTickets").GetROProperty("value")
+'MsgBox No_Tkts
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").SelectCell 0,1
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("SELECT FLIGHT").Click
+
+Per_Tkt_Price = WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("$108.60").GetROProperty("name")
+Displayed_Total_price = WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("$325.80").GetROProperty("name")
+'MsgBox Per_Tkt_Price
+ptp = FormatNumber(Per_Tkt_Price,2)
+TPrice = ptp * No_Tkts
+
+If FormatNumber(TPrice,2)=FormatNumber(Displayed_Total_price,2) Then
+	Reporter.ReportEvent micPass,"Total_Price","Price calculated correctly"
+Else
+	Reporter.ReportEvent micFail,"Total_Price","Price is not calculated correctly"
+End If
+
+
+''''''''''Casestudy 8
+
+
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select "London"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select "Paris"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+rowcnt = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").RowCount
+row = 1
+
+For i = 0 To rowcnt-1 Step 1
+	
+	WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").SelectCell i,2
+	flightNo = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").GetCellData(i,4)
+	Price = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").GetCellData(i,0)
+	DataTable.Value("FlightNo",1) = flightNo
+	DataTable.Value("Price",1) = Price
+	row = row+1
+	DataTable.GlobalSheet.SetCurrentRow(row)
+Next
+
+
+
+
+
+
+
+'''''''''''Casestudy 9
+
+totaldays = DataTable.GlobalSheet.GetRowCount()
+'MsgBox totaldays
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select "London"
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select "Paris"
+
+For i = 1 To totaldays Step 1
+  	WpfWindow("HPE MyFlight Sample Applicatio").WpfCalendar("datePicker").SetDate DataTable("Date", dtGlobalSheet)
+    WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+    flightcount = WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").RowCount
+    DataTable.Value("No_Flights_available",1)=flightcount
+    WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("BACK").Click
+   DataTable.GlobalSheet.SetCurrentRow(i)
+Next
+
+
