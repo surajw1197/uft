@@ -1,0 +1,59 @@
+
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("fromCity").Select DataTable("FromCity", dtGlobalSheet)
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("toCity").Select DataTable("ToCity", dtGlobalSheet)
+WpfWindow("HPE MyFlight Sample Applicatio").WpfComboBox("numOfTickets").Select DataTable("NoTickets", dtGlobalSheet)
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("FIND FLIGHTS").Click
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("BACK").Click
+
+
+''''Environment  
+osversion = Environment("OSVersion")
+MsgBox osversion
+
+testDir =Environment("TestDir")
+MsgBox testDir
+
+
+
+
+'''Standard CheckPoint
+WpfWindow("HPE MyFlight Sample Applicatio").WpfButton("OK").Check CheckPoint("OK")
+
+''''Bitmap Checkpoint
+WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("London to Paris,  all").Check CheckPoint("London to Paris,  all inclusive")
+
+'''Text Checkpoint
+WpfWindow("HPE MyFlight Sample Applicatio").WpfObject("John Smith").Check CheckPoint("John Smith")
+
+
+'''Table Checkpoint
+WpfWindow("HPE MyFlight Sample Applicatio").WpfTable("flightsDataGrid").Check CheckPoint("flightsDataGrid")
+
+ 
+''''Image Checkpoint 
+WpfWindow("HPE MyFlight Sample Applicatio").WpfImage("image1").Check CheckPoint("image1")
+
+
+
+''''Page CheckPoint
+Browser("Welcome: Mercury Tours").Page("Welcome: Mercury Tours").Check CheckPoint("Welcome: Mercury Tours")
+
+
+
+''''Import
+
+DataTable.AddSheet "Sheet1"
+datatable.ImportSheet "C:\Users\pdc3a-training.pdc3a\Desktop\Demo.xlsx","Sheet1",1
+
+a=DataTable.GetSheet(1).GetRowCount
+
+For i  = 1 To a Step 1
+	DataTable.GetSheet(1).SetCurrentRow(i)
+	fname=DataTable.Value("First_Name",1)
+	lname=DataTable.Value("LastName",1)
+	
+
+	Browser("Welcome: Mercury Tours").Page("Register: Mercury Tours").WebEdit("firstName").Set fname
+	Browser("Welcome: Mercury Tours").Page("Register: Mercury Tours").WebEdit("lastName").Set lname
+	
+Next
